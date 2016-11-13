@@ -2,12 +2,9 @@
 lock '3.6.1'
 
 set :application, 'my_app_name'
-set :repo_url, 'git@example.com:me/my_repo.git'
-
 set :application, 'evinatherton.com'
 
 set :scm, :git
-# set :repo_url, 'git@github.com:ConnorAtherton/personal-website.git'
 set :branch, :master
 
 set :user, 'Connor'
