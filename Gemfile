@@ -19,4 +19,5 @@ gem 'sqlite3'
 
 group :development do
   gem 'thin'
+  gem 'capistrano', '~> 3.6'
 end
