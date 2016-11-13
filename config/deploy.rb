@@ -2,9 +2,7 @@
 lock '3.6.1'
 
 set :application, 'evinatherton.com'
-set :repository, 'git@github.com:ConnorAtherton/evinathertom.com.git'
-
-set :scm, :git
+set :repository, 'git@github.com:ConnorAtherton/evinatherton.com.git'
 set :branch, :master
 
 set :user, 'Connor'
