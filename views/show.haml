@@ -1,0 +1,4 @@
+%h1 Here is your link for #{@link.original_link}
+%a(href="#{from_root_url(@link.code)}")= h from_root_url(@link.code)
+%h3 Created at #{@link.created_at}
+%h3 Used #{@link.used} times

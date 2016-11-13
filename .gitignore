@@ -1,0 +1,7 @@
+*.db
+
+# Ignore all logfiles and tempfiles and precompild assets
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
