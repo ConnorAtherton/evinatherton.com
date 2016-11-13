@@ -1,8 +1,8 @@
 # config valid only for current version of Capistrano
 lock '3.6.1'
 
-set :application, 'my_app_name'
 set :application, 'evinatherton.com'
+set :repository, 'git@github.com:ConnorAtherton/evinathertom.com.git'
 
 set :scm, :git
 set :branch, :master
