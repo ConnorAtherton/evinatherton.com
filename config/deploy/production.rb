@@ -1,2 +1,2 @@
-server 'connoratherton.com', user: 'Connor', roles: %w{web}
+server 'connoratherton.com', user: 'connor', roles: %w{web}
 
