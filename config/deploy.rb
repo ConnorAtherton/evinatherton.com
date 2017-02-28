@@ -2,7 +2,7 @@
 lock '3.3.3'
 
 set :application, 'evinatherton.com'
-set :repository, 'git@github.com:ConnorAtherton/evinatherton.com.git'
+set :repo_url, 'git@github.com:ConnorAtherton/evinatherton.com.git'
 set :branch, :master
 
 set :user, 'Connor'

@@ -1,5 +1,7 @@
 *.db
 
+.capistrano
+
 # Ignore all logfiles and tempfiles and precompild assets
 /log/*
 /tmp/*
