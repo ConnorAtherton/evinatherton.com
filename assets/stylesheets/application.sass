@@ -1,0 +1,58 @@
+/**
+ * Vars
+ */
+$gutter: 2rem
+$gray: #E4EDF5
+$radius: .5rem
+
+/**
+ * Global
+ */
+*
+  margin: 0
+  padding: 0
+  box-sizing: border-box
+  position: relative
+
+html,
+body
+  height: 100%
+  transition: all .3s ease-in-out
+  font-family: -apple-system,BlinkMacSystemFont,avenir next,avenir,helvetica,helvetica neue,ubuntu,segoe ui,arial,sans-serif
+
+/**
+ * Component styles
+ */
+.c-app-root
+  display: flex
+  flex-flow: column
+  height: 100%
+
+.c-header
+  padding: $gutter
+
+.c-header-title
+  font-weight: 400
+  font-size: 1rem
+
+.c-content
+  flex: 1
+  align-items: baseline
+  display: table-row
+  background: #2dd7aa
+  padding: $gutter
+  overflow-x: scroll
+
+.c-pane
+  display: table-cell
+  min-width: 500px
+  padding-right: $gutter
+  height: 100%
+
+.c-card
+  padding: $gutter
+  border-radius: $radius
+  background: white
+  box-shadow: 0 5px 15px -5px #1f9a7a
+  height: 100%
+

@@ -2,16 +2,18 @@ $LOAD_PATH << File.expand_path('../', __FILE__)
 
 require 'rubygems'
 require 'bundler'
+require 'autoprefixer-rails'
 
 Bundler.require
-
-require 'database'
 
 class Application < Sinatra::Base
   register Sinatra::Flash
   register Sinatra::Reloader
 
-  set :sprockets, Sprockets::Environment.new(root)
+  environment = Sprockets::Environment.new
+  AutoprefixerRails.install(environment)
+
+  set :sprockets, environment
   set :assets_prefix, '/assets'
   set :assets_precompile, %w(application.js application.scss *.png *.jpg *.svg)
   set :assets_public_path, -> { File.join(public_folder, 'assets') }
@@ -26,8 +28,6 @@ class Application < Sinatra::Base
     sprockets.cache = Sprockets::Cache::FileStore.new('./tmp')
 
     get '/assets/*' do |asset|
-      puts "Asset: #{asset}"
-
       env['PATH_INFO'].sub!(%r{^/assets}, '')
       settings.sprockets.call(env)
     end
