@@ -1,6 +1,7 @@
 /**
  * Vars
  */
+$unit: 4px
 $gutter: 2rem
 $gray: #E4EDF5
 $radius: .5rem
@@ -19,6 +20,70 @@ body
   height: 100%
   transition: all .3s ease-in-out
   font-family: -apple-system,BlinkMacSystemFont,avenir next,avenir,helvetica,helvetica neue,ubuntu,segoe ui,arial,sans-serif
+  color: #32325d
+
+p
+  font-size: 18px
+  line-height: 30px
+  margin-bottom: 15px
+  color: #525f7f
+
+h2
+  font-size: 30px
+  margin-bottom: 24px
+
+/**
+ * Components
+ */
+.c-welcome-drawing
+  width: 760px
+  background: red
+  min-height: 450px
+  margin: 4rem auto
+
+.c-section-border
+  border-top: 1px solid #efeff1
+  border-bottom: 1px solid #efeff1
+  background: -webkit-linear-gradient(108deg,#70d0ee,#2a84d2 90%) no-repeat 100% 0
+  background-size: 50% 100%
+
+.c-card-container
+  position: absolute
+  top: 0
+  left: 0
+  width: 1200px
+  min-height: 300px
+
+.c-small-card
+  background: white
+  margin-top: 35px
+  margin-left: 35px
+  width: 240px
+  height: 165px
+  float: left
+  box-shadow: 1px 5px 25px #1f90b3
+
+.c-container
+  min-height: 640px
+  width: 100%
+  position: relative
+  margin: auto
+  display: flex
+
+.u-padding
+  padding: 3rem 2rem
+
+.c-container-item
+  width: 50%
+  flex: 1
+  position: relative
+
+  &:last-of-type
+    border-left: 1px solid #efeff1
+
+.c-container-item-left
+  width: 480px
+  float: right
 
 /**
  * Component styles
@@ -48,11 +113,3 @@ body
   min-width: 500px
   padding-right: $gutter
   height: 100%
-
-.c-card
-  padding: $gutter
-  border-radius: $radius
-  background: white
-  box-shadow: 0 5px 15px -5px #1f9a7a
-  height: 100%
-
