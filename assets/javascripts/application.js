@@ -10,8 +10,8 @@
     }
 
     return {
-      x: a.x * (1 - Math.abs(a.x) / bounds.width) * .3,
-      y: a.y * (1 - Math.abs(a.y) / bounds.height) * .3
+      x: a.x * (1 - Math.abs(a.x) / bounds.width) * .2,
+      y: a.y * (1 - Math.abs(a.y) / bounds.height) * .2
     }
   }
 
