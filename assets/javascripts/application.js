@@ -9,6 +9,8 @@
       y: evt.clientY - bounds.top - bounds.height / 2
     }
 
+    console.log(a)
+
     return {
       x: a.x * (1 - Math.abs(a.x) / bounds.width) * .2,
       y: a.y * (1 - Math.abs(a.y) / bounds.height) * .2
@@ -19,13 +21,16 @@
     Array.from(document.querySelectorAll('.c-small-card')).forEach(function (card, i) {
       var bounds = card.getBoundingClientRect()
 
-      function update (evt) {
-        var rotate = delta(evt, bounds)
-        card.style.transform = "perspective(" + defaultPerspective + "px) rotateX(" + rotate.x + "deg) rotateY(" + -rotate.y + "deg)"
-      }
+      // function update (evt) {
+      //   var rotate = delta(evt, bounds)
+      //   card.style.transform = "perspective(" + defaultPerspective + "px) rotateX(" + rotate.x + "deg) rotateY(" + -rotate.y + "deg)"
+      // }
 
-      card.addEventListener("mouseenter", function(evt) {
+      function addRotations (evt) {
+        console.log('[addRotations] delta')
         var rotate = delta(evt, bounds)
+
+        console.log('=> adding rotation', rotate)
 
         animate({
           el: card,
@@ -34,13 +39,20 @@
           rotateY: -rotate.y,
           easing: "easeOutQuad",
           duration: 150,
-          complete: function() {
-            return card.addEventListener("mousemove", update)
-          }
+          // complete: function() {
+          //   return card.addEventListener("mousemove", update)
+          // }
         })
-      })
+      }
 
-      card.addEventListener("mouseleave", function(evt) {
+      // card.addEventListener("mouseleave", function(evt) {
+      //   card.setAttribute("style", "")
+      // })
+
+      card.addEventListener("mouseenter", addRotations)
+
+     card.addEventListener("mouseleave", function(evt) {
+        console.log('[mouseleave] delta')
         var rotate = delta(evt, bounds)
 
         animate({
@@ -50,9 +62,9 @@
           rotateY: [-rotate.y, 0],
           easing: "easeOutCubic 400",
           duration: 250,
-          complete: function() {
-            return card.removeEventListener("mousemove", update)
-          }
+          // complete: function() {
+          //   return card.removeEventListener("mousemove", update)
+          // }
         })
       })
     })

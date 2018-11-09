@@ -1,10 +1,48 @@
 /**
+ * Mixins
+ */
+$selectionColor: #b4d5fe
+
+@mixin textShadowToCropUnderline($color)
+  text-shadow: .03em 0 $color, -.03em 0 $color, 0 .03em $color, 0 -.03em $color, .06em 0 $color, -.06em 0 $color, .09em 0 $color, -.09em 0 $color, .12em 0 $color, -.12em 0 $color, .15em 0 $color, -.15em 0 $color
+
+@mixin linkUnderlines($backgroundColor, $color)
+  +textShadowToCropUnderline($backgroundColor)
+
+  color: $color
+  text-decoration: none
+  background-image: linear-gradient($backgroundColor, $backgroundColor), linear-gradient($backgroundColor, $backgroundColor), linear-gradient($color, $color)
+  background-size: .05em 1px, .05em 1px, 1px 1px
+  background-repeat: no-repeat, no-repeat, repeat-x
+  background-position: 0% 90%, 100% 90%, 0% 90%
+
+  &.heavy-underline
+    background-size: .05em 0.06em, .05em 0.06em, 0.06em 0.06em
+    background-position: 0% 92%, 100% 92%, 0% 92%
+
+  &::selection,
+  &::-moz-selection
+    +textShadowToCropUnderline($selectionColor)
+    background: $selectionColor
+
+  &:before,
+  &:after,
+  *,
+  *:before,
+  *:after
+    text-shadow: none
+
+  &:visited
+    color: $color
+
+/**
  * Vars
  */
 $unit: 4px
 $gutter: 2rem
 $gray: #E4EDF5
 $radius: .5rem
+$body-color: #32325d
 
 /**
  * Global
@@ -21,6 +59,14 @@ body
   transition: all .3s ease-in-out
   font-family: -apple-system,BlinkMacSystemFont,avenir next,avenir,helvetica,helvetica neue,ubuntu,segoe ui,arial,sans-serif
   color: #32325d
+  background: #f4f4f4
+
+main
+  max-width: 1200px
+  padding: 3rem
+  background: white
+  margin: 2rem auto
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, .1)
 
 p
   font-size: 18px
@@ -32,14 +78,67 @@ h2
   font-size: 30px
   margin-bottom: 24px
 
+a,
+.u-underline
+  +linkUnderlines(#fff, $body-color)
+
+.hero-title
+  font-size: 60px
+
+.u-mb-4
+  padding-bottom: 4rem
+
+.u-d-flex
+  display: flex
+
+.u-flex-c
+  flex: 1
+
+.u-p-rel
+  position: relative
+
+.c-offset-hero-container
+  position: relative
+  width: 60%
+  padding: 2rem 2rem 2rem 6rem
+  z-index: 4
+  min-height: calc(500px + 2rem)
+
+.c-offset-hero-image
+  position: absolute
+  left: -100px
+  z-index: 1
+
+.c-offset-hero
+  display: flex
+  flex-direction: column
+  align-content: space-between
+  justify-content: space-between
+  height: 100%
+
+.c-hero-meta
+  margin-right: 100px
+  display: flex
+  align-items: end
+
+.c-hero-meta-desc
+  flex: 1
+  margin-left: 2rem
+  margin-bottom: 0
+
+.c-arrow-down
+  width: 60px
+  height: 60px
+  background: yellow
+
 /**
  * Components
  */
 .c-welcome-drawing
-  width: 760px
-  background: red
-  min-height: 450px
-  margin: 4rem auto
+  width: 100%
+  background: #5EB1BF
+  min-height: 500px
+  max-width: 600px
 
 .c-section-border
   border-top: 1px solid #efeff1
@@ -92,9 +191,6 @@ h2
   display: flex
   flex-flow: column
   height: 100%
-
-.c-header
-  padding: $gutter
 
 .c-header-title
   font-weight: 400
