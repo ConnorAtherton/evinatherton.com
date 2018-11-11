@@ -11,7 +11,9 @@ namespace :deploy do
   namespace :assets do
     desc "builds assets"
     task :process do
-      execute "cd #{current_path} && RACK_ENV=production bundle exec rake assets:clean assets:precompile"
+      on roles(:app) do
+        execute "cd #{current_path} && RACK_ENV=production bundle exec rake assets:clean assets:precompile"
+      end
     end
   end
 
