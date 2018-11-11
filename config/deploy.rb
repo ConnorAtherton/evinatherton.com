@@ -18,7 +18,7 @@ set :linked_dirs, fetch(:linked_dirs, []) << '.bundle'
 
 namespace :deploy do
   before :deploy, 'deploy:check_revision'
-  after :deploy, 'assets:precompile'
+  after :deploy, 'deploy:assets:process'
   after :deploy, 'deploy:nginx:enable_site'
   after :deploy, 'deploy:nginx:restart'
   after :deploy, 'thin:restart'
