@@ -7,7 +7,7 @@ namespace :thin do
       on roles(:app), in: :sequence, wait: 5 do
         within current_path do
           config_file = "config/thin.yml"
-          execute "RACK_ENV=production bundle exec thin #{command} -C #{config_file}"
+          execute "cd #{current_path} && sudo RACK_ENV=production bundle exec thin #{command} -C #{config_file}"
         end
       end
     end

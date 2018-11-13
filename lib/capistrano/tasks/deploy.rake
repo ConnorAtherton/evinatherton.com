@@ -30,7 +30,7 @@ namespace :deploy do
     desc "Symlinks config files for Nginx."
     task :enable_site do
       on roles(:app) do
-        execute "cd #{current_path} && sudo cp config/nginx/sites-available/evinatherton.com /etc/nginx/sites-enabled/#{fetch(:application)}-https"
+        execute "cd #{current_path} && sudo cp config/nginx/sites-available/evinatherton.com /etc/nginx/sites-enabled/#{fetch(:application)}"
       end
     end
   end

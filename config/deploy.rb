@@ -20,6 +20,6 @@ namespace :deploy do
   before :deploy, 'deploy:check_revision'
   after :deploy, 'deploy:assets:process'
   after :deploy, 'deploy:nginx:enable_site'
-  after :deploy, 'deploy:nginx:restart'
   after :deploy, 'thin:restart'
+  after :deploy, 'deploy:nginx:restart'
 end
