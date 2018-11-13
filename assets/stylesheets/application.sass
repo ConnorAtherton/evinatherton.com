@@ -35,6 +35,24 @@ $selectionColor: #b4d5fe
   &:visited
     color: $color
 
+@mixin hoverStrikethrough
+  &:hover::after
+    opacity: 1
+    transform: scale3d(1,1,1)
+
+  &::after
+    content: ''
+    width: 100%
+    top: 54%
+    height: 2px
+    background: $secondary-color
+    position: absolute
+    left: 0
+    opacity: 0
+    transform: scale3d(0,1,1)
+    transition: transform 0.3s, opacity 0.3s
+    transform-origin: 100% 50%
+
 /**
  * Vars
  */
@@ -43,6 +61,8 @@ $gutter: 2rem
 $gray: #E4EDF5
 $radius: .5rem
 $body-color: #32325d
+$primary-color: #d24000
+$secondary-color: #5EB1BF
 
 /**
  * Global
@@ -68,6 +88,20 @@ main
   margin: 2rem auto
   box-shadow: 0px 6px 15px rgba(0, 0, 0, .1)
 
+  > section:not(:last-of-type)
+    position: relative
+    margin-bottom: 10rem
+
+    &::after
+      content: ''
+      width: 100px
+      height: 15px
+      position: absolute
+      background: pink
+      bottom: calc(-5rem - 10px)
+      left: 50%
+      margin-left: -50px
+
 p
   font-size: 18px
   line-height: 30px
@@ -78,12 +112,20 @@ h2
   font-size: 30px
   margin-bottom: 24px
 
-a,
+a:not(.without-underline),
 .u-underline
   +linkUnderlines(#fff, $body-color)
 
+a
+  +hoverStrikethrough
+
+  color: $body-color
+
 .hero-title
   font-size: 60px
+
+.u-mr-2
+  margin-right: 1.4rem
 
 .u-mb-4
   padding-bottom: 4rem
@@ -129,7 +171,34 @@ a,
 .c-arrow-down
   width: 60px
   height: 60px
-  background: yellow
+  position: relative
+
+  // This is to account for line-height in adjascent paragraph
+  margin-bottom: 5px
+
+  &::before,
+  &::after
+    content: ''
+    position: absolute
+
+  &::before
+    left: 30px
+    top: 0
+    bottom: 0
+    width: 3px
+    background: $secondary-color
+    border-radius: 5px
+
+  &::after
+    width: 30px
+    height: 30px
+    background: transparent
+    bottom: 6px
+    left: 15px
+    border-bottom: 3px solid $secondary-color
+    transform: rotate(45deg)
+    border-right: 3px solid $secondary-color
+    border-radius: 2px
 
 /**
  * Components
@@ -191,6 +260,15 @@ a,
   display: flex
   flex-flow: column
   height: 100%
+
+.c-header
+  display: flex
+  justify-content: space-between
+  align-items: center
+
+  > nav a
+    padding: 0 0.4rem
+    text-decoration: none
 
 .c-header-title
   font-weight: 400
